@@ -25,7 +25,7 @@ const Login = () => {
         if (password.length < 6) {
             setLoginError('Password should be not less then')
         } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
-            setLoginError('Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a special character.')
+            setLoginError('Password or Email are wrong')
             return
         }
 

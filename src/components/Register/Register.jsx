@@ -19,6 +19,8 @@ const Register = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+        const acceptCheck = e.target.checkbox.checked;
+        console.log("acceptCheck", acceptCheck)
 
         setLoginError('');
         setLoginSuccess('');
@@ -27,6 +29,9 @@ const Register = () => {
         } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
             setLoginError('Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a special character.')
             return
+        } else if (!acceptCheck) {
+            setLoginError('Please accept our terms and conditions')
+            return;
         }
 
         // console.log('Name: ', name, 'Email: ', email, 'Password: ', password);
@@ -100,6 +105,7 @@ const Register = () => {
                     <div className="inline-flex items-center">
                         <label className="relative -ml-2.5 flex cursor-pointer items-center rounded-full p-3" htmlFor="remember">
                             <input type="checkbox"
+                                name="checkbox"
                                 className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                                 id="remember" />
                             <span
